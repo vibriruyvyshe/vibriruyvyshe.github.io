@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Вибрируй выше!</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      min-height: 100vh;
+      height: 100%;
+      background: #fae6ea url('background.png') no-repeat center top fixed;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      min-width: 320px;
+    }
+    .banner {
+      background: #ffe859;
+      padding: 10px 0;
+      text-align: center;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    .banner-content {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .banner-link {
+      color: inherit;
+      text-decoration: underline dotted;
+      cursor: pointer;
+      transition: color 0.2s;
+      margin-left: 8px;
+    }
+    .banner-link:hover {
+      color: #b55e78;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      padding: 20px 30px;
+      background: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.01);
+      justify-content: space-between;
+      position: relative;
+      z-index: 10;
+    }
+    .logo-img {
+      height: 46px;
+      margin-right: 28px;
+      flex-shrink: 0;
+    }
+    .menu-text {
+      font-size: 15px;
+      color: #222;
+      letter-spacing: 0.025em;
+      display: flex;
+      gap: 28px;
+      justify-content: flex-end;
+      flex: 1 1 auto;
+      transition: all 0.3s;
+    }
+    .burger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+      margin-left: 12px;
+    }
+    .burger span {
+      height: 4px;
+      width: 100%;
+      background: #e16a88;
+      border-radius: 2px;
+      display: block;
+      margin: 4px 0;
+      transition: 0.3s;
+    }
+    @media (max-width: 700px) {
+      .menu-text {
+        display: none;
+        flex-direction: column;
+        align-items: flex-end;
+        background: #fff;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        padding: 18px 32px 18px 32px;
+        box-shadow: 0 8px 20px rgba(240,108,135,0.10);
+        border-radius: 12px;
+        z-index: 99;
+      }
+      .menu-text.active {
+        display: flex;
+      }
+      .burger {
+        display: flex;
+      }
+      .header {
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+    .main-content {
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 0;
+      min-width: 0;
+      width: 100%;
+      position: relative;
+    }
+    .central-block {
+      background: rgba(255, 243, 246, 0.2);
+      border-radius: 18px;
+      max-width: 400px;
+      width: 90vw;
+      text-align: center;
+      box-shadow: 0 4px 32px rgba(240, 108, 135, 0.06);
+      padding: 38px 24px 40px 24px;
+    }
+    .lock-icon {
+      font-size: 44px;
+      margin-bottom: 16px;
+    }
+    .central-block-text {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 25px;
+    }
+    .btn-group {
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      position: fixed;
+      left: 0;
+      bottom: 48px;
+      pointer-events: none;
+      z-index: 20;
+    }
+    .btn-group a {
+      pointer-events: all;
+    }
+    .btn {
+      padding: 14px 40px;
+      background: #fff;
+      border: 1px solid #ffd6e4;
+      border-radius: 12px;
+      font-size: 16px;
+      color: #e16a88;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s;
+      box-shadow: 0 2px 4px rgba(241, 130, 160, 0.06);
+      font-weight: 600;
+    }
+    .btn:hover {
+      background: #ffe6f0;
+    }
+    .emoji-chat {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      font-size: 54px;
+      text-decoration: none;
+      z-index: 100;
+      transition: transform 0.15s;
+      filter: drop-shadow(0 2px 6px rgba(241, 130, 160, 0.18));
+    }
+    .emoji-chat:hover {
+      transform: scale(1.13);
+    }
+    @media (max-width: 520px) {
+      .central-block {
+        margin-top: 0;
+        padding: 18px 6px 18px 6px;
+        max-width: 98vw;
+      }
+      .header {
+        flex-direction: row;
+        align-items: center;
+        padding: 14px 3vw;
+      }
+      .logo-img {
+        margin-right: 0;
+        margin-bottom: 10px;
+      }
+      .btn-group {
+        bottom: 75px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="banner">
+    <span class="banner-content">
+      <span style="font-size: 20px; margin-right: 8px;">💥</span>
+      <a class="banner-link" href="https://vk.com/lessonss_for_you" target="_blank">
+        ТОЛЬКО СЕГОДНЯ КУРС «КАК ВЫЙТИ ЗАМУЖ» ВСЕГО ЗА 19 900!
+      </a>
+    </span>
+  </div>
+  <div class="header">
+    <img src="logo.png" alt="Вибрируй выше! Логотип" class="logo-img">
+    <div class="menu-text" id="menu">
+      <span class="menu-item">Главная</span>
+      <span class="menu-item">Курсы</span>
+      <span class="menu-item">Отзывы</span>
+      <span class="menu-item">Наши коучи</span>
+      <span class="menu-item">Контакты</span>
+    </div>
+    <div class="burger" id="burger" aria-label="Открыть меню" tabindex="0">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <div class="main-content">
+    <div class="central-block">
+      <div class="lock-icon">🔒</div>
+      <div class="central-block-text">САЙТ НАХОДИТСЯ В РАЗРАБОТКЕ</div>
+    </div>
+  </div>
+  <div class="btn-group">
+    <a class="btn" href="https://vk.com/vibriryi" target="_blank">Перейти в группу</a>
+  </div>
+  <a class="emoji-chat" href="https://vk.me/join/N2tsc1Z93D_xvCQ_kJyAfbb4shKYuE2dOrA=" target="_blank" title="Чат Вибрируй выше!">💬</a>
+  <script>
+    // Скрипт для бургер-меню
+    const burger = document.getElementById('burger');
+    const menu = document.getElementById('menu');
+    burger.addEventListener('click', function() {
+      menu.classList.toggle('active');
+    });
+    burger.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        menu.classList.toggle('active');
+      }
+    });
+  </script>
+</body>
+</html>
